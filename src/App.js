@@ -53,7 +53,8 @@ export default class App extends Component {
   }
   state = {
       posts: [],
-      search: null
+      search: null,
+      texts: "Type to search"
   }
    componentDidMount(){ 
         this.getData();
@@ -72,7 +73,7 @@ export default class App extends Component {
 render(){
   const items = this.state.posts.filter(data=>{
     if(this.state.search == null)
-          return data
+        return data
     if(data.title.toLowerCase().includes(this.state.search.toLowerCase()) || data.body.toLowerCase().includes(this.state.search.toLowerCase()))
           return data
   }).map(data=>{
@@ -86,7 +87,7 @@ render(){
     return (
        <label>
         <input type="search" id="search" placeholder="Search..." onChange={(e)=>this.searchFunction(e)}/>
-        <span id="message">Type to filter.</span>
+        <span id="message">{this.state.count}</span>
         {items}
       </label>
     )
